@@ -1,6 +1,7 @@
 package test.time;
 
 import org.junit.jupiter.api.Test;
+import top.ignatiusgl.exception.IllegalStateException;
 import top.ignatiusgl.time.TimeUnit;
 import top.ignatiusgl.time.Timer;
 
@@ -20,5 +21,43 @@ public class TimerTest {
         Thread.sleep(2000);
         timer.stop();
         System.out.println("time:" + timer.elapsed(TimeUnit.SECONDS));
+
+        timer.clear();
+        timer.start();
+        Thread.sleep(2000);
+        timer.stop();
+        System.out.println("time:" + timer.elapsed(TimeUnit.SECONDS));
+    }
+
+    @Test
+    public void testException() throws InterruptedException {
+        Timer timer = Timer.startTimer();
+
+        try {
+            timer.start();
+        } catch (IllegalStateException e) {
+            System.out.println("Exception:" + e.getMessage());
+        }
+
+        Thread.sleep(1000);
+        try {
+            timer.elapsed();
+        } catch (IllegalStateException e) {
+            System.out.println("Exception:" + e.getMessage());
+        }
+        try {
+            timer.clear();
+        } catch (IllegalStateException e) {
+            System.out.println("Exception:" + e.getMessage());
+        }
+
+        timer.stop();
+
+        try {
+            timer.stop();
+        } catch (IllegalStateException e) {
+            System.out.println("Exception:" + e.getMessage());
+        }
+
     }
 }
