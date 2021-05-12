@@ -83,13 +83,13 @@ public class Timer {
             case NANOSECOND:
                 return elapsed;
             case MILLISECOND:
-                return elapsed / 1000.0;
-            case SECONDS:
                 return elapsed / 1000.0 / 1000;
-            case MINUTES:
+            case SECONDS:
                 return elapsed / 1000.0 / 1000 / 1000;
+            case MINUTES:
+                return elapsed / 1000.0 / 1000 / 1000 / 60;
             case HOUR:
-                return elapsed / 1000.0 / 1000 / 1000 / 1000;
+                return elapsed / 1000.0 / 1000 / 1000 / 60 / 60;
             default:
                 return -1L;
         }

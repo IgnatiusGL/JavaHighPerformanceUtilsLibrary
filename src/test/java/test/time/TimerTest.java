@@ -16,17 +16,19 @@ public class TimerTest {
         Timer timer = Timer.startTimer();
         Thread.sleep(1000);
         timer.stop();
-        System.out.println("time:" + timer.elapsed());
+        System.out.println("time:" + timer.elapsed() + " s");
         timer.start();
         Thread.sleep(2000);
         timer.stop();
-        System.out.println("time:" + timer.elapsed(TimeUnit.SECONDS));
+        System.out.println("time:" + timer.elapsed(TimeUnit.SECONDS) + " s");
+        System.out.println("time:" + timer.elapsed(TimeUnit.MILLISECOND) + " ms");
 
         timer.clear();
         timer.start();
         Thread.sleep(2000);
         timer.stop();
-        System.out.println("time:" + timer.elapsed(TimeUnit.SECONDS));
+        System.out.println("time:" + timer.elapsed(TimeUnit.SECONDS) + " s");
+        System.out.println("time:" + timer.elapsed(TimeUnit.SECONDS) + " ms");
     }
 
     @Test

@@ -1,7 +1,7 @@
 .idea
 .gradle
 /build/
-.idea
+/src/test/java/test/personTest
 
 # Ignore Gradle GUI config
 gradle-app.setting
