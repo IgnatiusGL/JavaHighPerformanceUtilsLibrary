@@ -5,8 +5,8 @@ package top.ignatiusgl.exception;
  * @author: IgnatiusGL
  * @date: 2021-03-04 14:52
  */
-public class IllegalStateException extends RuntimeException{
-    public IllegalStateException(String msg){
+public class IllegalStateException extends RuntimeException {
+    public IllegalStateException(String msg) {
         super(msg);
     }
 }

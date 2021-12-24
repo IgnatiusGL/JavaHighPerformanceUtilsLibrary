@@ -8,8 +8,15 @@ package top.ignatiusgl.string;
 public class StringUtils {
     /**
      * Replace the value according to the value passed in
+     * <p>
+     * Examples:
+     * <blockquote><pre>
+     *     replaceAllToOne("123pre213pres2456qwe", new String[]{"pre", "qwe"}, "test") returns "123test213tests2456test"
+     * </pre></blockquote>
      *
-     * @param value value that passed in
+     * @param value    value that passed in
+     * @param oldChars string that you want to replace
+     * @param newChar  string that final version
      * @return value that you've processed
      */
     public static String replaceAllToOne(String value, String[] oldChars, String newChar) {
@@ -19,8 +26,21 @@ public class StringUtils {
         return value;
     }
 
+    /**
+     * Converting strings to humps
+     * <p>
+     * Examples:
+     * <blockquote><pre>
+     *     toUpperHump("test-example", StringType.HYPHEN) returns "TestExample"
+     *     toUpperHump("test_example", StringType.UNDERSCORE) returns "TestExample"
+     * </pre></blockquote>
+     *
+     * @param value string that have hyphen or underscore
+     * @param type  word segmentation types
+     * @return converted string
+     */
     public static String toUpperHump(String value, StringType type) {
-        value = value.substring(0,1).toUpperCase() + value.substring(1);
+        value = value.substring(0, 1).toUpperCase() + value.substring(1);
 
         while (value.contains(type.value)) {
             int segmentIndex = value.indexOf(type.value);
