@@ -16,8 +16,7 @@ public class HTMLTest {
     public void baseTest() {
         String source = WebUtils.getSource("https://www.baidu.com");
         HTML html = new HTML(source);
-        HTML div = html.div("#wrapper");
-        List<HTML> divs = div.tag("div");
+        List<HTML> divs = html.div("#wrapper").tag("div");
         System.out.println(divs);
     }
 }

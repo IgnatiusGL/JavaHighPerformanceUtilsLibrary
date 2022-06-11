@@ -43,8 +43,7 @@ public class HTML {
         for (String s : div) {
             sb.append(s).append("\n");
         }
-        sourceCode = sb.toString();
-        return this;
+        return new HTML(sb.toString());
     }
 
     public HTML p(String name) {
@@ -54,8 +53,7 @@ public class HTML {
         for (String s : p) {
             sb.append(s).append("\n");
         }
-        sourceCode = sb.toString();
-        return this;
+        return new HTML(sb.toString());
     }
 
     public HTML h1(String name) {
@@ -65,8 +63,7 @@ public class HTML {
         for (String s : h1) {
             sb.append(s).append("\n");
         }
-        sourceCode = sb.toString();
-        return this;
+        return new HTML(sb.toString());
     }
 
     /**
