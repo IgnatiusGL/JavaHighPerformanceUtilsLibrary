@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.zip.GZIPInputStream;
 
 /**
  * @Description: Built-in tools for handling web.
@@ -26,9 +27,15 @@ public class WebUtils {
         String source = null;
         try {
             HttpURLConnection httpURLConnection = (HttpURLConnection) new URL(url).openConnection();
+            httpURLConnection.setRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.122 Safari/537.36");
+            httpURLConnection.setRequestProperty("Content-Type", "text/html; charset=utf-8");
+            httpURLConnection.setRequestProperty("Accept-Encoding", "gzip, deflate, br");
+            httpURLConnection.setRequestProperty("Accept", "*/*");
+            httpURLConnection.setRequestProperty("Connection", "close");
+
             httpURLConnection.connect();
             if (httpURLConnection.getResponseCode() == 200) {
-                InputStreamReader inputStreamReader = new InputStreamReader(httpURLConnection.getInputStream());
+                InputStreamReader inputStreamReader = new InputStreamReader(new GZIPInputStream(httpURLConnection.getInputStream()));
                 BufferedReader br = new BufferedReader(inputStreamReader);
                 String line;
                 StringBuilder sb = new StringBuilder();
