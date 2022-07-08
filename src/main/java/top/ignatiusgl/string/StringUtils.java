@@ -38,6 +38,8 @@ public class StringUtils {
      * <blockquote><pre>
      *     toHumpString("test-example", "-", true) returns "TestExample"
      *     toHumpString("test_example", "_", false) returns "testExample"
+     *     toHumpString("test_example_1", "_", false) returns "testExample1"
+     *     toHumpString("test_example1", "_", false) returns "testExample1"
      * </pre></blockquote>
      *
      * @param value     string that have separator
@@ -56,7 +58,7 @@ public class StringUtils {
         int index = 0, resultIndex = 0;
         for (char aChar : chars) {
             if (index == separatorChars.length) {
-                resultChars[resultIndex++] = (char) (aChar - 32);
+                resultChars[resultIndex++] = aChar >= 97 && aChar <= 122 ? (char) (aChar - 32) : aChar;
                 index = 0;
             } else if (aChar == separatorChars[index]) {
                 index++;
@@ -70,6 +72,7 @@ public class StringUtils {
 
     /**
      * Converting strings with separator to upper humps
+     *
      * @refer toHumpString
      */
     public static String toUpperHump(String value, String separator) {
@@ -78,6 +81,7 @@ public class StringUtils {
 
     /**
      * Converting strings with separator to Lower humps
+     *
      * @refer toHumpString
      */
     public static String toLowerHump(String value, String separator) {
@@ -91,6 +95,7 @@ public class StringUtils {
      * <blockquote><pre>
      *     toSeparatorString("testExample", "-") returns "test-example"
      *     toSeparatorString("TestExample", "_") returns "test_example"
+     *     toSeparatorString("TestExample1", "_") returns "test_example_1"
      * </pre></blockquote>
      *
      * @param value     upper/lower hump string
@@ -110,6 +115,9 @@ public class StringUtils {
             if (aChar >= 65 && aChar <= 90) {
                 resultChars.addAll(separatorChars);
                 resultChars.add((char) (aChar + 32));
+            } else if (48 <= aChar && aChar <= 57) {
+                resultChars.addAll(separatorChars);
+                resultChars.add(aChar);
             } else {
                 resultChars.add(aChar);
             }

@@ -43,7 +43,9 @@ public class StringUtilsTest {
                 "big_data",
                 "background_icon",
                 "button_login",
-                "submit_record"
+                "submit_record",
+                "submit_record_1",
+                "submit_record1"
         };
         for (int i = 0; i < testString.length; i++) {
             testString[i] = StringUtils.toHumpString(testString[i], "_", false);
@@ -57,7 +59,9 @@ public class StringUtilsTest {
                 "bigData",
                 "BackgroundIcon",
                 "buttonLogin",
-                "SubmitRecord"
+                "SubmitRecord",
+                "submitRecord1",
+                "SubmitRecord1"
         };
 
         for (int i = 0; i < testString.length; i++) {
