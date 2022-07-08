@@ -1,7 +1,6 @@
 package test.string;
 
 import org.junit.jupiter.api.Test;
-import top.ignatiusgl.string.StringType;
 import top.ignatiusgl.string.StringUtils;
 
 import java.util.Arrays;
@@ -36,9 +35,9 @@ public class StringUtilsTest {
                 "submit-record"
         };
         for (int i = 0; i < testString.length; i++) {
-            testString[i] = StringUtils.toUpperHump(testString[i], StringType.HYPHEN);
+            testString[i] = StringUtils.toHumpString(testString[i], "-", true);
         }
-        System.out.println("StringUtils-replaceAllToOne1:" + Arrays.asList(testString));
+        System.out.println("StringUtils-toHumpString1:" + Arrays.asList(testString));
         testString = new String[]{
                 "test_asd",
                 "big_data",
@@ -47,8 +46,23 @@ public class StringUtilsTest {
                 "submit_record"
         };
         for (int i = 0; i < testString.length; i++) {
-            testString[i] = StringUtils.toUpperHump(testString[i], StringType.UNDERSCORE);
+            testString[i] = StringUtils.toHumpString(testString[i], "_", false);
         }
-        System.out.println("StringUtils-replaceAllToOne2:" + Arrays.asList(testString));
+        System.out.println("StringUtils-toHumpString2:" + Arrays.asList(testString));
+
+        System.out.println("----------------------------------------------------");
+
+        testString = new String[]{
+                "testAsd",
+                "bigData",
+                "BackgroundIcon",
+                "buttonLogin",
+                "SubmitRecord"
+        };
+
+        for (int i = 0; i < testString.length; i++) {
+            testString[i] = StringUtils.toSeparatorString(testString[i], "_");
+        }
+        System.out.println("StringUtils-toSeparatorString:" + Arrays.asList(testString));
     }
 }
